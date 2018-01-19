@@ -1,0 +1,1 @@
+{"rustc":2076919156954903493,"features":"[]","target":15882672106424667815,"profile":731176819336294830,"deps":[["rand v0.3.20",13558951535756838610]],"local":[{"MtimeBased":[[1516383026,0],"/Users/leizhao/src/learn-rust/guessing_game/target/debug/.fingerprint/guessing_game-aefb29820d00deca/dep-bin-guessing_game-aefb29820d00deca"]}],"rustflags":[]}
