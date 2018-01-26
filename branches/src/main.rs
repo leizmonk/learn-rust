@@ -9,9 +9,10 @@ fn main() {
 
     if number != 0 {
         println!("number was something other than zero");
-    }
+    }  
 
     else_ifs();
+    iffy_let();
 }
 
 fn else_ifs() {
@@ -26,4 +27,15 @@ fn else_ifs() {
     } else {
         println!("number is not divisible by 4, 3, or 2");
     }
+}
+
+fn iffy_let() {
+    let condition = true;
+    let number = if condition {
+        5
+    } else {
+        6
+    };
+
+    println!("The value of number is: {}", number);
 }
