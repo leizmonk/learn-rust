@@ -9,6 +9,7 @@ fn main() {
     io::stdin().read_line(&mut fahrenheit)
         .expect("Failed to read line.");
 
+    // Have to use trim() before parse on the stdin bc it adds a new line
     let float_f: f64 = fahrenheit.trim().parse::<f64>().unwrap();
 
     println!("{:?}", float_f);
