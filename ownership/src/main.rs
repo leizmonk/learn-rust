@@ -5,19 +5,34 @@ fn main() {
 
     println!("{}", s);
 
+    let s1 = gives_ownership();         // gives_ownership moves its return
+                                        // value into s1.
+
+    let s2 = String::from("bollocks");     // s2 comes into scope.
+
+    let s3 = takes_and_gives_back(s2);  // s2 is moved into
+                                        // takes_and_gives_back, which also
+                                        // moves its return value into s3.
+
     str_move();
 
     int_copy();
 
     pass_val_fn();
+
+    println!("s1 = {}, s3 = {}", s1, s3);
+
+    gives_ownership();
 } // scope is over, variable s is no longer valid, drop() gets called here on s
+  // s3 goes out of scope and is dropped. s2 goes out of scope but was
+  // moved, so nothing happens. s1 goes out of scope and is dropped.
 
 fn str_move() {
-    let s1 = String::from("hello");
-    let s2 = s1.clone();
+    let str1 = String::from("bob's");
+    let str2 = str1.clone();
 
-    // println!("{}, world!", s1); <- errors if s1 isn't cloned because it would to s2 
-    println!("s1 = {}, s2 = {}", s1, s2);
+    // println!("{}, burgers!", s1); <- errors if s1 isn't cloned because it would to s2 
+    println!("str1 = {}, str2 = {}", str1, str2);
 }
 
 fn int_copy() {
@@ -38,7 +53,6 @@ fn pass_val_fn() {
     makes_copy(x);                  // x would move into the function,
                                     // but i32 is Copy, so it’s okay to still
                                     // use x afterward.
-
 } // Here, x goes out of scope, then s. But since s's value was moved, nothing
   // special happens.
 
@@ -50,3 +64,21 @@ fn takes_ownership(some_string: String) { // some_string comes into scope.
 fn makes_copy(some_integer: i32) { // some_integer comes into scope.
     println!("{}", some_integer);
 } // Here, some_integer goes out of scope. Nothing special happens.
+
+fn gives_ownership() -> String {             // gives_ownership will move its
+                                             // return value into the function
+                                             // that calls it.
+
+    let some_string = String::from("world"); // some_string comes into scope.
+
+    some_string                              // some_string is returned and
+                                             // moves out to the calling
+                                             // function.
+}
+
+// takes_and_gives_back will take a String and return one.
+fn takes_and_gives_back(a_string: String) -> String { // a_string comes into
+                                                      // scope.
+
+    a_string  // a_string is returned and moves out to the calling function.
+}
