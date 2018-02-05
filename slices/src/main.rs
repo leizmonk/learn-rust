@@ -22,14 +22,20 @@ fn first_word(s: &String) -> usize {
     s.len()
 }
 
-fn alt_first_word(s: &String) -> &str {
+// Can take in slice of a whole String, as well as string literal (&str type)
+fn alt_first_word(s: &str) -> &str { 
     let bytes = s.as_bytes();
 
     for (i, &item) in bytes.iter().enumerate() {
         if item == b' ' {
+            // Return a slice of the string up to the first index position where
+            // found a byte representing the string literal for a space
+            println!("1 - {}", &s[0..i]);
             return &s[0..i];
         }
     }
 
+    // If there were no spaces, take a full slice of the entire String 
+    println!("2 - {}", &s[..]);
     &s[..]
 }
