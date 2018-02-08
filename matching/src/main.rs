@@ -64,11 +64,16 @@ fn main() {
     let five = Some(5);
     let six = plus_one(five);
     let none = plus_one(None);
+    let some_u8_value = Some(0u8);
 
     println!("The value of six is {:?}, the value of none is {:?}", six, none);
 
     // Result: "It's a quarter from Hawaii!""
     value_in_cents(Coin::Quarter(UsState::Hawaii));
+
+    // If let is preferable, same result otherwise
+    no_if_let_match(some_u8_value);
+    if_let_match(some_u8_value);    
 }
 
 // Matching for an Option
@@ -105,5 +110,21 @@ fn value_in_cents(coin: Coin) -> u32 {
             println!("It's a quarter from {:?}!", state);
             25
         },
+    }
+}
+
+fn no_if_let_match(x: Option<u8>) -> () {
+    // Only do something if the value is Some(3)
+    match x {
+        Some(3) => println!("Three!"),
+        _ => println!("Not three! {:?}", x), // Covers all other values
+    }
+}
+
+fn if_let_match(x: Option<u8>) -> () {
+    if let Some(3) = x {
+        println!("Easier three!");
+    } else {
+        println!("Easier not three! {:?}", x);
     }
 }
