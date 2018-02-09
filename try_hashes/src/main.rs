@@ -22,8 +22,8 @@ fn median(values: &mut Vec<i32>) -> f32 {
 
     // accounts for even or odd sized vectors
     if count % 2 == 0 {
-        // if even sized vector, average the middle 2 values
-        values[middle_index] as f32 + values[middle_index - 1] as f32 / 2.0
+        // if even sized vector, average the middle 2 values    
+        (values[middle_index] as f32 + values[middle_index - 1] as f32) / 2.0
     } else  {
         // if odd sized vector, return middle index
         values[middle_index] as f32
@@ -41,6 +41,8 @@ fn mode(values: &Vec<i32>) -> i32 {
     }
 
     // convert occurrences to an iterator
+    // TODO: need to handle the case where more than one integer is the mode
+    // and also when every integer occurs exactly once
     occurrences.into_iter()
         .max_by_key(|&(_, count)| count) // get the key w the largest int value
         .map(|(val, _)| val)
@@ -49,7 +51,7 @@ fn mode(values: &Vec<i32>) -> i32 {
 
 fn main() {
     let mut rng = rand::thread_rng();
-    let mut values: Vec<i32> = (0..20).map(|_| rng.gen_range(-50, 50)).collect();
+    let mut values: Vec<i32> = (0..rng.gen_range(1, 20)).map(|_| rng.gen_range(-50, 50)).collect();
     values.sort();
 
     println!("Here's the set of integers: {:?}", values);
