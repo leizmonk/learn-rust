@@ -1,0 +1,7 @@
+[package]
+name = "try_hashes"
+version = "0.1.0"
+authors = ["Lei Zhao <lei@petflow.com>"]
+
+[dependencies]
+rand = "0.4.0"
