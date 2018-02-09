@@ -1,1 +1,1 @@
-/Users/leizhao/src/learn-rust/try_hashes/target/debug/try_hashes.dSYM: /Users/leizhao/src/learn-rust/try_hashes/src/main.rs
+/Users/leizhao/src/learn-rust/try_hashes/target/debug/try_hashes.dSYM: /Users/leizhao/src/learn-rust/try_hashes/src/lib.rs /Users/leizhao/src/learn-rust/try_hashes/src/main.rs /Users/leizhao/src/learn-rust/try_hashes/src/pig_latin.rs /Users/leizhao/src/learn-rust/try_hashes/src/avg_median_mode.rs
