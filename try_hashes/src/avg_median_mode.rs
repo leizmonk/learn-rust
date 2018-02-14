@@ -38,7 +38,7 @@ pub fn mode(values: &Vec<i32>) -> i32 {
         *occurrences.entry(int).or_insert(0) += 1;
     }
 
-    // convert occurrences to an iterator
+    // convert occurrences to an iterator, this is copypasta
     // TODO: need to handle the case where more than one integer is the mode
     // and also when every integer occurs exactly once
     occurrences.into_iter()

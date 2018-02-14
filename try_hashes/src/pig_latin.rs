@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 // Sourced from: https//codereview.stackexchange.com/questions/172866/pig-latin-exercise-in-rust
 pub fn pig_latinize(input: &str) {
     // .chars() converts input to an iterator, peekable allows this iterator to 
@@ -41,6 +39,7 @@ pub fn pig_latinize(input: &str) {
             // if the character is alphabetic, push it to oinked
             match c {
                 'a'...'z' | 'A'...'Z' => {
+                    // push the character if it exists, then move to the next character
                     chars.next();
                     oinked.push(c);
                 }
@@ -48,8 +47,8 @@ pub fn pig_latinize(input: &str) {
             }
         }
 
-        // // append the appropriate suffix
-        // oinked += &suffix;
+        // append the appropriate suffix
+        oinked += &suffix;
     }
 
     println!("{}", oinked);
