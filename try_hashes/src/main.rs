@@ -1,7 +1,9 @@
 extern crate try_hashes;
 // extern crate rand;
 use std::io;
+use std::collections::HashMap;
 // use rand::Rng;
+
 
 fn main() {
     // // Average, Mean, Mode
@@ -24,16 +26,27 @@ fn main() {
     // try_hashes::pig_latin::pig_latinize(&unpigged);
 
     // Employee Names
+    let mut employee_list = HashMap::new();
+    // Seed with some data
+
+    employee_list.insert("Jill", "Accounting");
+    employee_list.insert("Mordecai", "Sales");
+    employee_list.insert("Freda", "Operations");
+
+    let departments = ["Accounting", "Sales", "Marketing", "Operations", "IT"];
+    
     println!("Create employee, or retrieve list?");
-    println!("If adding employee type: 'Add [name] to [department]'");
+    println!("If adding employee type: 'add [name] to [department]'");
+    println!("Available departments: {:?}", departments);
     println!("Otherwise, type 'retrieve' to get a list of employees.");
+    
     let mut choice = String::new();
     io::stdin().read_line(&mut choice)
         .expect("Failed to read line.");
 
     if choice.trim() == "retrieve" {
-        try_hashes::employees::retrieve();
-    } else if choice.trim() == "add" {
+        try_hashes::employees::retrieve(employee_list);
+    } else if choice.trim().contains("add") {
         try_hashes::employees::create();
     } else {
         println!("Fucked.");
