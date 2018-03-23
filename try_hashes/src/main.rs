@@ -43,11 +43,12 @@ fn main() {
     let mut choice = String::new();
     io::stdin().read_line(&mut choice)
         .expect("Failed to read line.");
+    let input: &str = &*choice;
 
     if choice.trim() == "retrieve" {
         try_hashes::employees::retrieve(employee_list);
     } else if choice.trim().contains("add") {
-        try_hashes::employees::create();
+        try_hashes::employees::create(input);
     } else {
         println!("Fucked.");
     }
